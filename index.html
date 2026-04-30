@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Sandali Geethma - Portfolio</title>
-</head>
-<body style="font-family:Arial;text-align:center;padding:50px;background:#1a1a2e;color:white;">
-  <h1>Sandali Geethma</h1>
-  <h3>ESOFT Student | Student ID:E306127</h3>
-  <p>Welcome to my first cording portfolio!</p>
-  <p>I am learning web development and this is my first website.</p>
-  <hr style="width:50%;margin:30px auto;">
-  <p><b>Github:</b> Lalithapathmani</p>  
-  <a href="game.html"style="background;#e94560;color:white;padding:15px 30px;text-decoration:none;border-radius:10px;display:inline-block;margin-top:20px;">
-    play My Bousing Ball Game
-  </a>
-</body>
+    <head>
+        <title>Click Game Pro v2.0 - Sandali</title>
+        <style>
+            body {text-align:center;font-family:Arial;background: #1a1a1a;color:white;}
+            h1{ color: #00ff88;}
+            button { font-size:24px;padding:20px 40px;cursor:pointer;background:#00ff88; border: none;border-radius:10px;}
+            #score { font-size:48px;margin:20px;}
+            </style>
+    </head>
+    <body>
+        <h1>Click Game Pro v2.0</h1>
+        <p>by Sandali Geethma - Future Software Engineer</p>
+        <div id="score">0</div>
+        <button onclick="addScore()">CLICK ME!</button>
+        <p>High Score: <span id="highscore>0</span></p>
+                           <button onclick="resetGame()">Reset</button>
+            <script>
+                let score = 0;
+                let highScore = localStorage.getItem('highScore') ||0;
+                document.getElementById('highscore').innerText = highScore;
+                function addScore() {
+
+                score++;
+                    document.getElementById('score').innerText = score;
+                    if (score > highScore) {
+                        highScore = score;
+                        localStorage.setItem('highScore',highScore);
+                        document.getElementById('highscore').innerText = highScore;
+                    }
+                }
+                function resetGame() {
+
+                score = 0;
+                    document.getElementById('score').innerText = score;
+                }
+</script>
+    </body>
 </html>
