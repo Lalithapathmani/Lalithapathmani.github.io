@@ -88,9 +88,16 @@
             function startGame() {
                 score = 0;
                 timeLeft = 10;
-                gameRunnking = true;
+                gameRunning = true;
                 scoreEl.textContent = score;
                 timerEl.textContent = `Time:${timeLeft}s`;
+                startBtn.disabled = true;
+                clickBtn.disabled = false;
+
+                timerId = setInterval(() => {
+                    timeLeft--;
+                    timerEl.textContent = `Time: ${timeLeft}s`;
+                    
                 if (timeLeft <= 0) {
                     endGame();
                 }
@@ -100,7 +107,7 @@
             function endGame() {
                 clearInterval(timerId);
                 gameRunning = false;
-                cliclBtn.disabled = false;
+                clickBtn.disabled = false;
                 timerEl.textContent = "Game Over!";
 
                 let currentHigh = localStorage.getItem('highScoreV3')|| 0;
