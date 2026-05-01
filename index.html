@@ -1,40 +1,133 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Click Game Pro v2.0 - Sandali FINAL</title>
+        <title>Click Game Pro v3.0 - 10s Challenge</title>
         <style>
-            body {text-align:center;font-family:Arial;background: #1a1a1a;color:white;}
-            h1{ color: #00ff88;}
-            button { font-size:24px;padding:20px 40px;cursor:pointer;background:#00ff88; border: none;border-radius:10px;}
-            #score { font-size:48px;margin:20px;}
+            body {
+                font-family:Arial,sans-serif;
+                text-align:center;
+                background: #0d1117;
+                color: #fff;
+                padding: 20px;
+                margin: 0;
+            }
+            .game-box {
+                background: #161b22;
+                padding: 30px;
+                border-radius: 12px;
+                max-width: 400px;
+                margin: 20px auto;
+                border: 1px solid #30363d;
+            }
+            h1 {color: #2ea043;margin:0 0 5px 0;}
+            h3 {color: #8b949e; margin:0 0 20px 0; font-weight:normal;}
+            #score { font-size: 72px; font-weight: bold; margin: 20px 0;}
+            #timer { font-size: 24px; color: #f0883e; margin: 20px 0;}
+            button {
+                background: #238636;
+                color: white;
+                border: none;
+                padding: 15px 30px;
+                font-size: 20px;
+                border-radius: 8px;
+                cursor: pointer;
+                margin: 5px;
+                width: 80%;
+            }
+            button:disabled { background: #30363d; cursor: not-allowed; }
+            #startBtn { background: #1f6feb;}
+            #resetBtn { background: #da3633;}
+            .stats { margin-top: 20px; color: #8b949e;}
             </style>
     </head>
     <body>
-        <h1>Click Game Pro v2.0</h1>
-        <p>by Sandali Geethma - Future Software Engineer</p>
-        <div id="score">0</div>
-        <button onclick="addScore()">CLICK ME!</button>
-        <p>High Score: <span id="highscore">0</span></p>
-                           <button onclick="resetGame()">Reset</button>
-            <script>
-                let score = 0;
-                let highScore = localStorage.getItem('highScore') ||0;
-                document.getElementById('highscore').innerText = highScore;
-                function addScore() {
+        <div class="game-box">
+            <h1>Click Game Pro v3.0</h1>
+            <h3>by Sandali Geethma - 10s Challenge</h3>
 
-                score++;
-                    document.getElementById('score').innerText = score;
-                    if (score > highScore) {
-                        highScore = score;
-                        localStorage.setItem('highScore',highScore);
-                        document.getElementById('highscore').innerText = highScore;
-                    }
+            <div id="timer">Time: 10s</div>
+            <div id="score">0</div>
+
+            <button id="clickBtn" disabled>CLICK ME!</button>
+            <br>
+            <button id="startBtn">START GAME</button>
+            <button id="resetBtn">RSET</button>
+
+            <div class="stats">
+                <p>High Score: <span id="highScore">0</span></p>
+            </div>
+
+            <br>
+            <a href="https://github.com/Lalithapathmani"target="_blank" style="display: inline-block; 10px 20px; background: #24292e; color: #fff; text-decoration: none; border-radius: 6px; font-size: 14px;">
+                view My GitHub
+            </a>
+        </div>
+
+        <script>
+            let Score = 0;
+            let timeLeft = 10;
+            let timerId = null;
+            let gameRunning = false;
+
+            const scoreEl = document.getElementById('score');
+            const timerEl = document.getElementById('timer');
+            const highScoreEl = document.getElementById('highScore');
+            const clickBtn = document.ElementById('clickBtn');
+            const startBtn = document.ElementById('startBtn');
+            const resetBtn = document.ElementById('resetBtn');
+
+            highScoreEl.textContent = localStorage.getItem('highScoreV3') || 0;
+
+            function updateScore() {
+                if (gameRunning) {
+                    score++;
+                    scoreEl.textContent = score;
                 }
-                function resetGame() {
+            }
 
+            function startGame() {
                 score = 0;
-                    document.getElementById('score').innerText = score;
+                timeLeft = 10;
+                gameRunnking = true;
+                scoreEl.textContent = score;
+                timerEl.textContent = `Time:${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    endGame();
                 }
-</script>
+            },1000);
+            }
+
+            function endGame() {
+                clearInterval(timerId);
+                gameRunning = false;
+                cliclBtn.disabled = false;
+                timerEl.textContent = "Game Over!";
+
+                let currentHigh = localStorage.getItem('highScoreV3')|| 0;
+                if (score > currentHigh) {
+                    localStorage.setItem('highScoreV3',score);
+                    highScoreEl.textContent = score;
+                    alert('New High Score!🎉${score} clicks in 10s!`);
+                          } else {
+                    alert(`Time's up! You scored ${score} clicks.`);
+                }
+            }
+
+            function resetGame() {
+                clearInterval(timerId);
+                gameRunning = false;
+                score = 0;
+                timeLeft = 10;
+                scoreEl.textContent = score;
+                timerEl.textContent =`Time: ${timeLeft}s`;
+                clickBtn.disabled = true;
+                startBtn.disabled = false;
+            }
+
+            clickBtn.addEventListener('click',updateScore);
+            startBtn.addEventListener('click',startGame);
+            resetBtn.addEventListener('click',resetGame);
+        </script>
     </body>
+</html>                    
 </html>
