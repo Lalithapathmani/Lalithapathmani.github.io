@@ -51,7 +51,7 @@
             <button id="clickBtn" disabled>CLICK ME!</button>
             <br>
             <button id="startBtn">START GAME</button>
-            <button id="resetBtn">RSET</button>
+            <button id="resetBtn">RESET</button>
 
             <div class="stats">
                 <p>High Score: <span id="highScore">0</span></p>
@@ -76,10 +76,16 @@
             const startBtn = document.getElementById('startBtn');
             const resetBtn = document.getElementById('resetBtn');
 
+            //Sound effect
+const popSound = new Audio('https://cdn.pixbay.com/download/audio/2022/03/15/audio_d1718ab41b.mp3');
+            popSound.volume = 0.3;
+
             highScoreEl.textContent = localStorage.getItem('highScoreV3') || 0;
 
             function updateScore() {
                 if (gameRunning) {
+                    popSound.currentTime = 0;
+                    popSound.play();
                     score++;
                     scoreEl.textContent = score;
                 }
