@@ -107,14 +107,14 @@
             function endGame() {
                 clearInterval(timerId);
                 gameRunning = false;
-                clickBtn.disabled = false;
+                clickBtn.disabled = true;
                 timerEl.textContent = "Game Over!";
 
                 let currentHigh = localStorage.getItem('highScoreV3')|| 0;
                 if (score > currentHigh) {
                     localStorage.setItem('highScoreV3',score);
                     highScoreEl.textContent = score;
-                    alert('New High Score!🎉${score} clicks in 10s!`);
+                    alert('New High Score!🎉'+score+'clicks in 10s!');
                           } else {
                     alert(`Time's up! You scored ${score} clicks.`);
                 }
