@@ -11,9 +11,11 @@
     background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
     display: flex;
     justify-content: center;
-    align-items: 100vh;
+    align-items: center;
+   min-height: 100vh;
     margin: 0;
     padding: 20px;
+   touch-action: manipulation;
   }
   .calculator {
     background: #2d3748;
@@ -43,7 +45,7 @@
   }
   .buttons {
     display: grid;
-    grid-template-coloumns: repeat(4,1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 10px;
   }
   button {
