@@ -1,33 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh; display: flex; justify-content: center;
-            align-items: center; padding: 20px;
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>Lalitha Weather App</title>
+<style>
+    * { margin: 0;padding: 0;box-sizing:border-box; }
+    body {
+        font-family:'Segoe UI',sans-serif;
+        background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .container {
+        background: rgba(255,255,255,0.95);
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 0 20px 60px rgba(0,0,0,3);
+        text-align: center;
+    }
+    h1 { color: #333; margin-bottom: 10px; }
+    h3 { color: #667eea; margin-bottom: 20px; font-size: 16px; }
+    input {
+        width: 100%
+        padding: 12px;
+        font-size: 16px;
+        border: 2px solid #667eea;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        outline: none;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    buuton:hover { background: #5568d3; }
+    #weatherResult {
+        margin-top: 20px;
+        color: #333;
+        font-size: 18px;
+        min-height: 30px;
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌤️Weather App</h1>
+        <h3>By Lalitha Pathmani</h3>
+
+        <input type="text"id="cityName"placeholder="Enter City:Colombo,Berlin...">
+        <button onclick="checkWeather()">Check Weather</button>
+
+        <h2 id="weatherResult"></h2>
+        <p style="margin-top:30px;font-size:12px; color:#666;">
+            GitHub: Lalithapathmani | Future Software Engineer
+        </p>
+    </div>
+
+    <script>
+        function checkWeather() {
+            let city = document.getElementById("cityName").value;
+            let result = document.getElementById("weatherResult");
+
+            if(city == "") {
+                result.innerText = "⚠️ please enter a city name!";
+                result.style.color = "red";
+            } else {
+                result.innerText = "&deg" + city + "`-31`&deg;C,Sunny☀️";
+                result.style.color = "#333";
+            }
         }
-       .container {
-            background: rgba(255, 255, 255, 0.95); border-radius: 20px;
-            padding: 30px; max-width: 500px; width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        h1 { text-align: center; color: #333; margin-bottom: 20px; }
-       .search-box { display: flex; gap: 10px; margin-bottom: 25px; }
-        input {
-            flex: 1; padding: 12px 15px; border: 2px solid #ddd;
-            border-radius: 10px; font-size: 16px; outline: none;
-        }
-        input:focus { border-color: #667eea; }
-        button {
-            padding: 12px 25px; background: #667eea; color: white;
-            border: none; border-radius: 10px; cursor: pointer;
-            font-size: 16px; font-weight: 600;
-        }
-        button:hover { background: #5568d3; }
-       .weather-info { display
+    </script>
+</body>
+</html>
+                
+            
+    
+    
