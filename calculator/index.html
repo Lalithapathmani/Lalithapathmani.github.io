@@ -20,8 +20,8 @@
   .calculator {
     background: #2d3748;
     padding: 20px;
-    border-radius: 20px
-    box-shadow: 0 10px 30px rgba(0,0,0,0,3);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     width: 100%;
     max-width: 320px;
   }
@@ -87,7 +87,7 @@
     <h2 class="title">Lalitha Calculator</h2>
     <input type="text"id="display" disabled value="0">
     <div class="buttons">
-      <button class="clear" onclick="clearDisplay()"></button>
+      <button class="clear" onclick="clearDisplay()">C</button>
       <button onclick="deleteLast()">DEL</button>
       <button class="operator" onclick="appendToDisplay('/')">&divide;</button>
       <button class="operator" onclick="appendToDisplay('*')">&times;</button>
