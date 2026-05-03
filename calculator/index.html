@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>Lalitha Calculator</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  .calculator {
+    background: #2d3748;
+    padding: 20px;
+    border-radius: 20px
+    box-shadow: 0 10px 30px rgba(0,0,0,0,3);
+    width: 100%;
+    max-width: 320px;
+  }
+  .title {
+    color: white;
+    text-align: center;
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+  }
+  #display {
+    width: 100%;
+    height: 70px;
+    background: #1a202c;
+    color: #48bb78;
+    font-size: 2rem;
+    text-align: right;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  .buttons {
+    display: grid;
+    grid-template-coloumns: repeat(4,1fr);
+    gap: 10px;
+  }
+  button {
+    height: 60px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #4a5568;
+    color: white;
+    transition: 0.2s;
+  }
+  button:hover {
+    background: #718096;
+    transform: scale(1.05);
+  }
+  .operator {
+    background: #ed8936;
+  }
+  .equals:hover {
+    background: #38a169;
+  }
+  .clear {
+    background: #f56565;
+  }
+  .clear:hover {
+    background: #ea53e3e;
+  }
+  footer {
+    text-align: center;
+    color: #a0aec0;
+    margin-top: 15px;
+    font-size: 0.8rem;
+  }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2 class="title">Lalitha Calculator</h2>
+    <input type="text"id="display" disabled value="0">
+    <div class="buttons">
+      <button class="clear" onclick="clearDisplay()"></button>
+      <button onclick="deleteLast()">DEL</button>
+      <button class="operator" onclick="appendToDisplay('/')">&divide;</button>
+      <button class="operator" onclick="appendToDisplay('*')">&times;</button>
+
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button class="operator" onclick="appendToDisplay('-')">-</button>
+
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button class="operator" onclick="appendToDisplay('+')">+</button>
+
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('.')">.</button>
+
+      <button onclick="appendToDisplay('0')">0</button>
+      <button class="equals" onclick="calculate()">=</button>
+    </div>
+    <footer>By Lalitha Pathmani | Project </footer>
+  </div>
+
+  <script>
+    let display = document.getElementById('display');
+
+    function appendToDisplay(value) {
+      if (display.value ==='0' && value !=='.') {
+        display.value = value;
+      } else {
+        display.value += value;
+      }
+    }
+
+    function clearDisplay() {
+      display.value ='0';
+    }
+
+    function deleteLast() {
+      display.value = display.value.slice(0,-1);
+      if (display.value ===") display.value ='0';
+          }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = 'error';
+        srtTimeout(() => display.value ='0',1500);
+      }
+    }
+</script>
+</body>
+</html>
