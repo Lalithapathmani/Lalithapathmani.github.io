@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<meta name="viewport"content="width=device-width,initial-scale=1.0", users-scalabla=no">
 <title>Lalitha Calculator</title>
 <style>
-  * { box-sizing: border-box; }
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box; 
+   -webkit-tap-highlight-color: transparent;
+  }
+ 
   body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
@@ -13,23 +19,24 @@
     justify-content: center;
     align-items: center;
    min-height: 100vh;
-    margin: 0;
     padding: 20px;
-   touch-action: manipulation;
   }
+  
   .calculator {
     background: #2d3748;
+   border-radius: 20px;
     padding: 20px;
-    border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+   max-width: 320px;
     width: 100%;
-    max-width: 320px;
+   touch-action: manipulation;
   }
+ 
   .title {
     color: white;
     text-align: center;
-    margin: 0 0 15px 0;
-    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
   }
   #display {
     width: 100%;
